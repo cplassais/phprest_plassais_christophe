@@ -23,7 +23,6 @@ try {
             include 'controllers/carListController.php';
             break;
         case 'carsingle':
-            include 'index.php';
             include 'controllers/carSingleController.php';
             break;
         case 'carupdate':

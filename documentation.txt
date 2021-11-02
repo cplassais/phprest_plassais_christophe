@@ -1,3 +1,4 @@
-nom localhost =  eval3
+nom localhost = eval3 à remplacer par chemin local
 
-url pour liste des véhicules en json http://eval3/jsoncar/
+url pour liste des véhicules en json : http://eval3/jsoncar/
+url identifier un véhicule par n°série : http://eval3/carsingle/123456789/ ne fonctionne pas je suis resté bloqué à ce niveau sincèrement désolé

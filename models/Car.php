@@ -126,20 +126,6 @@ class Car extends Db
         $this->model_in_model = $model_in_model;
     }
 
-
-    /**
-     * @param $dbc
-     * @return mixed
-     */
-    static function getListCars($dbc)
-    {
-        $query = ("SELECT * FROM car ORDER BY licencePlate");
-        $sth = $dbc->query($query);
-        $cars = $sth->fetchAll(PDO::FETCH_CLASS, __CLASS__); //ou
-        //$cars = $sth->fetchAll(PDO::FETCH_CLASS, 'Car');
-        return $cars;
-    }
-
     static function getjsonListCars($dbc)
     {
         $query = ("SELECT * FROM car ORDER BY licencePlate");
@@ -154,23 +140,24 @@ class Car extends Db
      * @param $licencePlate
      * @return mixed
      */
-    public static function getCar($dbc, $licencePlate)
+    public static function getCarByLicence($dbc, $licencePlate)
     {
-
         $query = 'SELECT * FROM car WHERE licencePlate = :licencePlate';
         $aBindParam = array('licencePlate' => $licencePlate);
         $oCar = $dbc->select($query, $aBindParam);
-
+        //$oCar = json_encode($oCar);
         return $oCar;
     }
 
     /**
      * @param $dbc
-     * @param $id
+     * @param $id_car
      * @param $seats
      * @param $licencePlate
      * @param $serialNumber
      * @param $color
+     * @param $brand_in_brand
+     * @param $model_in_model
      * @return mixed
      */
     public function updateCar($dbc, $id_car, $seats, $licencePlate, $serialNumber, $color, $brand_in_brand, $model_in_model)
@@ -178,7 +165,7 @@ class Car extends Db
         $query = 'UPDATE car SET seats = :seats, licencePlate = :licencePlate, serialNumber = :serialNumber, brand_in_brand = :brand_in_brand, model_in_model = :model_in_model WHERE id_car = :id_car';
         $aBindParam = array('id_car' => $id_car, 'seats' => $seats, 'licencePlate' => $licencePlate, 'serialNumber' => $serialNumber, 'brand_in_brand' => $brand_in_brand, 'model_in_model' =>  $model_in_model);
         $oCar = $dbc->update($query, $aBindParam);
-
+        $oCar = json_encode($oCar);
         return $oCar;
     }
 
