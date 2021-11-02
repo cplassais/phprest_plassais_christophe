@@ -16,7 +16,6 @@ class Db extends PDO
     public function select($squery, $array = array(), $fetchMode = PDO::FETCH_CLASS)
     {
         $sth = $this->prepare($squery);
-        var_dump($array);
         if (!empty($array)):
             foreach ($array as $key => $value):
                 $sth->bindValue("$key", $value);
@@ -24,7 +23,6 @@ class Db extends PDO
         endif;
         $sth->execute();
         $sth->setFetchMode(PDO::FETCH_CLASS, 'Car');
-        var_dump($sth);
         return $sth->fetch();
     }
 

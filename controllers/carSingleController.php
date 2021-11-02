@@ -1,5 +1,4 @@
 <?php
-echo ($aParamsURL[2]);
 if (!empty($aParamsURL[2])):
     $oCar = Car::getCarByLicence($dbc, $aParamsURL[2]);
     if ($oCar == false) {

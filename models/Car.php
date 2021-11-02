@@ -145,7 +145,7 @@ class Car extends Db
         $query = 'SELECT * FROM car WHERE licencePlate = :licencePlate';
         $aBindParam = array('licencePlate' => $licencePlate);
         $oCar = $dbc->select($query, $aBindParam);
-        //$oCar = json_encode($oCar);
+        $oCar = json_encode($oCar);
         return $oCar;
     }
 
