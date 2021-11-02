@@ -1,8 +1,8 @@
 <?php
 const SERVER_NAME = 'localhost';
-const DB_NAME = 'student';
-const DB_USER = 'student';
-const DB_PASS = 'student';
+const DB_NAME = 'rentacar';
+const DB_USER = 'MYSQL_USER';
+const DB_PASS = 'MYSQL_PASSWORD';
 try {
     spl_autoload_register(function ($Class) {
         require_once 'models/' . $Class . '.php';
@@ -15,32 +15,28 @@ try {
 //    include 'index.php';
     $aParamsURL = explode('/', $_SERVER['REQUEST_URI']);
     switch ($aParamsURL[1]) {
-        case 'jsonsubject':
-            include 'controllers/subject/jsonSubjectController.php';
+        case 'jsoncar':
+            include 'controllers/jsonCarController.php';
             break;
-        case 'subjectlist':
+        case 'carlist':
             include 'index.php';
-            include 'controllers/subject/subjectListController.php';
+            include 'controllers/carListController.php';
             break;
-        case 'subjectsingle':
+        case 'carsingle':
             include 'index.php';
-            include 'controllers/subject/subjectSingleController.php';
+            include 'controllers/carSingleController.php';
             break;
-        case 'subjectupdate':
+        case 'carupdate':
             include 'index.php';
-            include 'controllers/subject/subjectUpdateController.php';
+            include 'controllers/carUpdateController.php';
             break;
-        case 'subjectdelete':
+        case 'cardelete':
             include 'index.php';
-            include 'controllers/subject/subjectDeleteController.php';
+            include 'controllers/carDeleteController.php';
             break;
-        case 'subjectadd':
+        case 'caradd':
             include 'index.php';
-            include 'controllers/subject/subjectAddController.php';
-            break;
-        case 'subjectduplicate':
-            include 'index.php';
-            include 'controllers/subject/subjectDuplicateController.php';
+            include 'controllers/carAddController.php';
             break;
         default:
             include 'index.php';
